@@ -1,0 +1,50 @@
+package me.GirlsDupeV2.girlsDupeV2;
+
+import me.GirlsDupeV2.girlsDupeV2.GirlsDupeV2;
+import net.luckperms.api.LuckPerms;
+import net.luckperms.api.model.user.User;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+
+public class TablistListener implements Listener {
+
+    private final GirlsDupeV2 plugin;
+
+    public TablistListener(GirlsDupeV2 plugin) {
+        this.plugin = plugin;
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        updateTablist(player);
+    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        updateTablist(player);
+    }
+
+    private void updateTablist(Player player) {
+        LuckPerms luckPerms = plugin.getLuckPerms();
+        User user = luckPerms.getUserManager().getUser(player.getUniqueId());
+
+        String prefix = luckPerms.getStorage().getCachedData(player.getWorld()).getMetaData(user).getPrefix();
+
+        String header = plugin.getConfig().getStringList("tablist.header").stream()
+                .map(line -> line.replace("%luckperms_prefix%", prefix).replace("%player_name%", player.getName()))
+                .reduce("", (a, b) -> a + "\n" + b);
+
+        String footer = plugin.getConfig().getStringList("tablist.footer").stream()
+                .map(line -> line.replace("%luckperms_prefix%", prefix).replace("%player_name%", player.getName()))
+                .reduce("", (a, b) -> a + "\n" + b);
+
+        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "minecraft:title " + player.getName() + " title {\"text\":\"" + header + "\"}");
+        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "minecraft:title " + player.getName() + " subtitle {\"text\":\"" + footer + "\"}");
+    }
+}

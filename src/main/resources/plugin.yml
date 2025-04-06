@@ -1,0 +1,152 @@
+name: GirlsDupeV2
+version: '0.1-SNAPSHOT'
+main: me.GirlsDupeV2.girlsDupeV2.GirlsDupeV2
+api-version: '1.21'
+prefix: GirlsDupe
+authors: [ Emma_The_Sigma ]
+description: "description: aaa"
+website: None
+softdepend: [ 'PlaceholderAPI' ]
+dependencies: [ 'LuckPerms' ]
+
+commands:
+  tpa:
+    description: TPA to a player
+  tpaccept:
+    description: TPA accept from a player
+  tpdeny:
+    description: TPA deny from a player
+  nightvision:
+    description: Toggle night vision
+  dupe:
+    description: Duplicates the item you are holding
+  rules:
+    description: Shows the server rules
+  invsee:
+    description: Toggles the visibility of your inventory to others
+  spawn:
+    description: Teleport to spawn
+  setspawn:
+    description: Set the spawn location
+  discord:
+    description: Send a link to the Discord server
+  end:
+    description: opens/close the end
+  ram:
+    description: Show the memory usage
+  keepinventory:
+    description: Toggles the keep inventory feature
+    permission: girlsdupe.keepinv
+  lpc:
+    description: Toggles the lpc feature
+  staffchat:
+    description: Staff chat command.
+    aliases:
+      - sc
+  sctoggle:
+    description: Toggle messages from staff chat.
+    aliases:
+      - staffchattoggle
+  scdisable:
+    description: Toggle sending messages to staff chat.
+    aliases:
+      - staffchatdisable
+  screload:
+    description: Reloads config.
+  adminchat:
+    description: Admin chat command.
+    aliases:
+      - asc
+      - adminstaffchat
+      - ac
+  adminchattoggle:
+    description: Toggle messages from admin chat.
+    aliases:
+      - actoggle
+  adminchatdisable:
+    description: Toggle sending messages to admin chat.
+    aliases:
+      - acdisable
+  schelp:
+    description: Shows all staff chat commands.
+    aliases:
+      - staffchathelp
+  devchat:
+    description: Developer chat command.
+    aliases:
+      - developerchat
+      - dc
+  devchattoggle:
+    description: Toggle messages from developer chat.
+    aliases:
+      - developerchattoggle
+      - dctoggle
+  devchatdisable:
+    description: Toggle sending messages to developer chat.
+    aliases:
+      - developerchatdisable
+      - dcdisable
+  minertrack:
+    description: Plugin's main command
+    aliases: [mt, mtrack]
+    usage: "/minertrack <command>"
+    permission: minertrack.use
+
+permissions:
+  girlsdupe.tpa:
+    description: "Allows the use of the /tpdeny command"
+    default: true
+  girlsdupe.vanish:
+    description: "Allows the use of the /vanish command"
+    default: false
+  girlsdupe.invsee:
+    description: "Allows the use of the /invsee command"
+    default: false
+  girlsdupe.setspawn:
+    description: "Allows the use of the /setspawn command"
+    default: false
+  girlsdupe.admin:
+    description: "Grants all permissions for the GirlsDupe plugin"
+    default: false
+    children:
+      girlsdupe.tpa: true
+      girlsdupe.nightvision: true
+      girlsdupe.back: true
+      girlsdupe.dupe: true
+      girlsdupe.vanish: true
+      girlsdupe.invsee: true
+      girlsdupe.setspawn: true
+      girlsdupe.keepinv: true
+  girlsdupe.keepinv:
+    description: "Allows the use of the /keepinventory command"
+    default: false
+  minertrack.use:
+    description: Permission to access the root command "/mtrack"
+    default: op
+  minertrack.check:
+    description: Allow player to use /mtrack check
+    default: op
+  minertrack.kick:
+    description: Allow player to use /mtrack kick
+    default: op
+  minertrack.help:
+    description: Allow player to use /mtrack help
+    default: op
+  minertrack.reset:
+    description: Allow player to use /mtrack reset
+    default: op
+  minertrack.sendnotify:
+    description: Allow player to use /mtrack notify
+    default: op
+  minertrack.verbose:
+    description: Allow player to use /mtrack verbose
+    default: op
+  minertrack.reload:
+    description: Allow player to use /mtrack reload
+    default: op
+  minertrack.bypass:
+    description: Bypass the X-Ray detection
+    default: op
+  minertrack.notify:
+    description: Receive notify information and verbose information
+    default: op
