@@ -39,7 +39,7 @@ The plugin's configuration can be found in the `plugins/GirlsDupeV2/config.yml` 
 
 ## Support
 
-For any questions or issues, please join the [GirlsDupeV2 Discord server](https://discord.gg/yourserverinvite) or open an issue on the [GitHub repository](https://github.com/yourusername/GirlsDupeV2/issues).
+For any questions or issues, please join the [GirlsDupeV2 Discord server](https://discord.gg/yourserverinvite) or open an issue on the [GitHub repository](https://github.com/EmmaTheSigma/GirlsDupeV2/issues).
 
 ## License
 
